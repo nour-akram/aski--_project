@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  :root{
+    --primaryColor:#1E82A9;
+    --background:#181D20;
+    --secondaryColor:#2A3236;
+    --erroColor:#8D2E46;
+  }
+main .col{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.popup-container{
+    width: 95%;
+    margin: 30px auto;
+}
+/* form{
+    background-color: red;
+    /* width: 100%; */
+/* } */ 
+.popup-container form input,.popup-container form textarea{
+    background-color: transparent;
+    padding: 15px;
+    border: 1.5px solid var(--primaryColor);
+    border-radius: 10px;
+    color: var(--primaryColor);
+    outline: none;
+    width: 100%;
+}
+.popup-container form textarea{
+    height: 100px;
+    resize: none;
+}
+.popup-container form textarea::placeholder{
+    color: var(--primaryColor);
+}
+.popup-container form input:focus{
+    border: 2.5px solid var(--primaryColor);
+}
+
+.container-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    width: 100%;
+  }
+  .container-btn button{
+    width: 18%;
+    background: var(--primaryColor);
+    color: white;
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: trocchi;
+    text-transform: capitalize;
+    border-radius: 10px;
+  }
+
+  .error-message {
+    color: var(--erroColor);
+    font-size: 0.85rem;
+    margin-top: 5px;
+  }
+  .fortags{
+    position: relative;
+  }
+  .tag-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* margin-top: 10px; */
+    position: absolute;
+    top: 20%;
+    left: 1%;
+  }
+  .tag {
+    display: flex;
+    align-items: center;
+    background-color: var(--primaryColor);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  .tag i {
+    margin-left: 5px;
+    cursor: pointer;
+  }

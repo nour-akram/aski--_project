@@ -1,0 +1,205 @@
+/* .rum-raisin-regular {
+    font-family: "Rum Raisin", serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  :root{
+    --primaryColor:#1E82A9;
+    --background:#181D20;
+    --secondaryColor:#2A3236;
+    --erroColor:#8D2E46;
+}
+  
+  /* .askii {
+    font-family: "Rum Raisin", serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
+   body {
+    margin: 0;
+    padding: 0;
+    background-color:var(--background);
+    color: var(--primaryColor);
+  }
+/*   
+  .headerr {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+ 
+  
+  header nav a {
+    color: #ffffff;
+    margin-left: 20px;
+  }
+  
+  #active{
+    color: #4cafef;
+  } */
+  
+   .register h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    margin-top: 60px;
+    margin-bottom: 60px;
+   }
+   .register_form{
+    margin-bottom: 40px;
+  }
+  .register_form{
+        display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .register_form{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primaryColor);
+    border-radius: 5px;
+    background-color:var(--primaryColor);
+  }
+  .labell{
+    margin-bottom: 60px;
+ background-color:transparent;
+ width: 100%;
+ height: 35px;
+ border-radius: 10px;
+ border: 1px solid var(--primaryColor);
+  }
+  /* #next {
+     margin-right: 0;
+     float: right;
+    width: 80px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #4cafef;
+    color: white;
+    
+    position: relative;
+    top: -60px; 
+ }
+ .haveaccount{
+  text-align: center;
+  margin-top: 150px;
+}
+.haveaccount p{
+  font-size: 20px;
+  color: #3e5b6c;
+  text-align: center;
+}
+.haveaccount span{
+  color: #3e5b6c;
+  text-align: center;
+  }
+  .haveaccount a{
+    text-align: center;
+    color: #2e79a1;
+  } */
+  span{
+    color: var(--erroColor);
+    font-size: 12px;
+  
+  }
+  .tag-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  } 
+  
+  
+  
+  .tag {
+    display: flex;
+    display: inline-block;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    padding: 5px 10px;
+   justify-content: space-between;
+    margin: 5px;
+    border-radius: 15px;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+  }
+
+
+  .tag button {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  .tag-container input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+
+span {
+    color: var(--erroColor);
+    font-size: 12px;
+}
+
+
+.form-group{
+  margin-bottom: 20px;
+}
+
+.container-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  width: 95%;
+}
+.alltags{
+  position: absolute;
+    top: 0;
+    left: 5px;
+}
+
+
+
+#fileInput {
+  display: none;
+}
+
+.upload-btn {
+  display: inline-block;
+  width: 85%;
+  text-align: end;
+  background-color: transparent;
+  color: var(--primaryColor);
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+/* 
+.upload-btn:hover {
+  background-color: var(--primaryColor);
+} */
+.form-group{
+  border:1px solid var(--primaryColor) ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}

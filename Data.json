@@ -1,0 +1,83 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "john",
+      "lastName":"doe",
+      "email": "john@example.com",
+      "password": "123",
+      "country": "egypt",
+      "interests": ["html", "css"],
+      "followers": 5,
+      "bio": "this is bio",
+      "userImage": "image.jpg"
+    },
+    {
+      "id": 2,
+      "username": "jane_smith",
+      "email": "jane@example.com",
+      "password": "123",
+      "country": "cairo",
+      "interests": ["html", "css"],
+      "followers": 2,
+      "bio": "this is bio",
+      "userImage": "image.jpg"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "title": "How to learn JavaScript?",
+      "content": "I am new to programming. Can someone guide me on how to start learning JavaScript effectively?",
+      "votes": 14,
+      "saved": true,
+      "userId": 1,
+      "createdAt": "2 hours ago",
+      "tags": ["html", "css"],
+      "answers": [
+        {
+          "id": 101,
+          "content": "Start with basics like variables and functions, and practice a lot.",
+          "votes": 10,
+          "userId": 2,
+          "createdAt": "1 hour ago",
+          "replies": [
+            {
+              "id": 201,
+              "content": "I agree, practice is the key.",
+              "votes": 3,
+              "userId": 1,
+              "createdAt": "5 seconds ago"
+            },
+            {
+              "id": 202,
+              "content": "Don't forget to learn ES6 features too!",
+              "votes": 5,
+              "userId": 2,
+              "createdAt": "1 hour ago"
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "content": "Try online tutorials and freeCodeCamp.",
+          "votes": 8,
+          "userId": 1,
+          "createdAt": "5 minutes ago",
+          "replies": []
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "How to learn Html?",
+      "content": "I am new to programming. Can someone guide me on how to start learning JavaScript effectively?",
+      "votes": 15,
+      "saved": false,
+      "userId": 1,
+      "createdAt": "6 hours ago",
+      "tags": ["html", "javascript", "c#"],
+      "answers": []
+    }
+  ]
+}

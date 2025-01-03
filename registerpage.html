@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register_page</title>
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  
+   
+   <nav class="row">
+      <div class="logo-search row">
+          <img src="./aki! logo.svg" alt="logo">
+          <div class="searchbar">
+            <input type="text" placeholder="search for any question title or tags">
+            <img src="./search.svg" alt="search">
+          </div>
+      </div>
+      <ul class="row">
+          <li >
+              <a href="index.html" class="col">
+                  <i class="fa-solid fa-house"></i>
+                  <p>Home</p>
+              </a>
+          </li>
+          <li>
+              <a href="./login.html" class="col">
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                  <p>Login</p>
+              </a>
+          </li>
+          <li>
+              <a href="./registerpage.html" class="col">
+                  <i class="fa-solid fa-user-plus"></i>
+                  <p>Register</p>
+              </a>
+          </li>
+          <li class="hidden">
+              <a href="#" class="col">
+                  <i class="fa-solid fa-bookmark"></i>
+                  <p>Save</p>
+              </a>
+          </li>
+          <li class="hidden">
+              <a href="#" class="col">
+                  <i class="fa-solid fa-user"></i>
+                  <p>Profile</p>
+              </a>
+          </li>
+          <li class="hidden">
+              <a href="#" class="col">
+                  <i class="fa-solid fa-right-from-bracket" style="rotate: 180deg;"></i>
+                  <p>Logout</p>
+              </a>
+          </li>
+      </ul>
+  </nav>
+  <div class="register-container">
+    <h2>REGISTER</h2>
+    <form id="register_form" method="get" onsubmit="onsubmitted(event)">
+        
+        <div class="form-group">
+          <div>
+            <label for="first-name" id="name">First Name</label>
+            <br>
+            <input type="text" class="labell" id="fname" required>
+            <span id="errorMessageFname"></span>
+          </div>
+         
+         <div>
+            <label for="last-name" id="lnamee">Last Name </label>
+            <br>
+            <input type="text" class="labell" id="lname" required>
+            <span id="errorMessageLname"></span>
+         </div>
+         
+         <div>
+            <label for="email" id="email">Email</label>
+            <br>
+            <input type="email" class="labell" id="emaill" required>
+            <span id="errorMessageEmail"></span>
+         </div>
+         
+         <div class="container-btn">
+           <input type="button" id="next" value="Next" onclick="onsubmitted(event)">
+        </div>
+    </form>
+
+     <div class="footerLogin">
+        <p>or</p>
+        <p>Already have an account?<a href="#">Login</a></p>
+     </div>
+
+</div>
+
+
+<script src="registeer.js"></script>
+<!-- <script src="."></script> -->
+</body>
+</html>

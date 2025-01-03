@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./popup.css">  
+    <link rel="stylesheet" href="./navbar.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+</head>
+<body>
+    <nav class="row">
+        <div class="logo-search row">
+            <img src="./aki! logo.svg" alt="logo">
+            <div class="searchbar">
+              <input type="text" placeholder="search for any question title or tags">
+              <img src="./search.svg" alt="search">
+            </div>
+        </div>
+        <ul class="row">
+            <li >
+                <a href="index.html" class="col">
+                    <i class="fa-solid fa-house"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="./login.html" class="col">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <p>Login</p>
+                </a>
+            </li>
+            <li>
+                <a href="./registerpage.html" class="col">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <p>Register</p>
+                </a>
+            </li>
+            <li class="hidden">
+                <a href="#" class="col">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <p>Save</p>
+                </a>
+            </li>
+            <li class="hidden">
+                <a href="#" class="col">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Profile</p>
+                </a>
+            </li>
+            <li class="hidden">
+                <a href="#" class="col">
+                    <i class="fa-solid fa-right-from-bracket" style="rotate: 180deg;"></i>
+                    <p>Logout</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div class="popup-container col">
+          <h2>Ask a public Question</h2>
+          <form id="questionForm" class="col">
+            <div>
+              <input type="text" name="title" id="title" placeholder="Title of your question">
+              <p id="titleError" class="error-message"></p>
+            </div>
+            <div>
+              <textarea name="content" id="content" placeholder="Make info about your question"></textarea>
+              <p id="contentError" class="error-message"></p>
+            </div>
+            <div class="fortags">
+              <input type="text" id="tagInput" placeholder="Add a tag and press Enter">
+              <p id="tagsError" class="error-message"></p>
+              <div id="tagBox" class="tag-box"></div>
+            </div>
+            <div class="container-btn">
+              <button type="submit">Post question</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    <script src="./popup.js"></script>
+</body>
+</html>

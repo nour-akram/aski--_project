@@ -1,0 +1,139 @@
+/* .rum-raisin-regular {
+    font-family: "Rum Raisin", serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
+
+  :root{
+    --primaryColor:#1E82A9;
+    --background:#181D20;
+    --secondaryColor:#2A3236;
+    --erroColor:#8D2E46;
+}
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* .askii {
+    font-family: "Rum Raisin", serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
+   body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:var(--background);
+    color: var(--primaryColor);
+  }
+  
+  /* .headerr {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+   */
+  /* header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+ 
+  
+  header nav a {
+    color: #ffffff;
+    margin-left: 20px;
+  }
+  
+  #active{
+    color: #4cafef;
+  }
+   */
+   .register-container{
+    /* margin-top: 100px;  */
+    /* text-align: center; */
+    width: 90%;
+    margin: 50px auto;
+    /* overflow: hidden; */
+}
+
+.register-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--primaryColor);
+    font-family: open sans;
+}
+  
+  .register_form{
+        display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .register_form{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primaryColor);
+    border-radius: 5px;
+    /* background-color:#191D20; */
+  }
+
+  .labell{
+    margin-bottom: 5px;
+    background-color:transparent;
+ width: 100%;
+ height: 35px;
+ border-radius: 10px;
+ color: var(--primaryColor);
+ border: 1px solid var(--primaryColor);
+  }
+  .container-btn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+  #next {
+    width: 20%;
+    max-width: 400px;
+    padding: 12px;
+    background-color: var(--primaryColor);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+ }
+ .footerLogin{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  color: var(--secondaryColor);
+  /* background-color: red; */
+}
+.footerLogin>p:nth-child(1){
+  /* background-color: red; */
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--secondaryColor);
+}
+.footerLogin a{
+color: var(--primaryColor);
+}
+  span{
+    color: var(--erroColor);
+    font-size: 12px;
+  
+  }
+ 
+  .form-group>div{
+    margin-bottom: 20px;
+  }
