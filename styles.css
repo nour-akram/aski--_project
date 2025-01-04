@@ -126,8 +126,9 @@ main{
 }
 .filter-box span:hover,.filter-box span.active{
   background-color: var(--primaryColor);
-  color: var(--secondaryColor);
+  color: white;
   border-radius: 5px;
+  cursor: pointer;
 }
 /*****************-----------Question Box --------------*/
 .question {

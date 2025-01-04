@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./QuestionDetails.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Trocchi&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="row">
+        <div class="logo-search row">
+            <img src="./aki! logo.svg" alt="logo">
+            <div class="searchbar">
+              <input type="text" placeholder="search for any question title or tags">
+              <img src="./search.svg" alt="search">
+            </div>
+        </div>
+        <ul class="row">
+            <li >
+                <a href="index.html" class="col">
+                    <i class="fa-solid fa-house"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="./login.html" class="col">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <p>Login</p>
+                </a>
+            </li>
+            <li>
+                <a href="./registerpage.html" class="col">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <p>Register</p>
+                </a>
+            </li>
+            <li class="hidden">
+                <a href="#" class="col">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <p>Save</p>
+                </a>
+            </li>
+            <li class="hidden">
+                <a href="#" class="col">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Profile</p>
+                </a>
+            </li>
+            <li class="hidden">
+                <a href="./logout.html" class="col">
+                    <i class="fa-solid fa-right-from-bracket" style="rotate: 180deg;"></i>
+                    <p>Logout</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+     <main>
+         <div class="details-Container">
+            <h2 id="question-title"></h2>
+            <div class="question-content rowDetails">
+                <div class="left colDetails ">
+                    <div class="votes">
+                        <i class="fa-solid fa-play" id="increament"></i>
+                         <span id="noOfVotes"></span>
+                         <i class="fa-solid fa-play" id="decreament"></i>
+                    </div>
+                    <div class="saved">
+                        <i class="fa-regular fa-bookmark" id="bookmark"></i>   
+                        <!-- <i class="fa-solid fa-bookmark"></i> -->
+                    </div>
+                </div>
+                <div class="right">
+                    <div id="content">
+                         <p></p>
+                         <h3>With Tags :</h3>
+                         
+                         <div class="tages-userinfo">
+                            <div id="tags"></div>
+                            <div class="userInfo">
+                                <div class="user">
+                                  <i class="fa-solid fa-user"></i>
+                                  <p id="username"></p>
+                                </div>
+                                <div class="time-difference">
+                                   Calculating...
+                                </div>
+                           </div>
+                         </div>
+                    </div>
+                 </div>
+            </div>
+            </div>
+         </div>
+
+
+         <div id="answers-Container">
+              
+         </div>
+         <div class="buttonAddAnswers">
+             <button>
+                <p>Add Answer</p>
+                <i class="fa-solid fa-circle-plus"></i>
+             </button>
+         </div>
+     </main>
+    <script src="./QuestionDetails.js"></script>
+</body>
+</html>

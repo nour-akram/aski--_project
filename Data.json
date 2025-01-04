@@ -14,7 +14,8 @@
     },
     {
       "id": 2,
-      "username": "jane_smith",
+      "firstName": "jane",
+      "lastName":"smith",
       "email": "jane@example.com",
       "password": "123",
       "country": "cairo",
@@ -32,7 +33,7 @@
       "votes": 14,
       "saved": true,
       "userId": 1,
-      "createdAt": "2 hours ago",
+      "createdAt": "2024-12-28T20:18:15.739Z",
       "tags": ["html", "css"],
       "answers": [
         {
@@ -40,21 +41,21 @@
           "content": "Start with basics like variables and functions, and practice a lot.",
           "votes": 10,
           "userId": 2,
-          "createdAt": "1 hour ago",
+          "createdAt": "2024-12-28T21:18:15.739Z",
           "replies": [
             {
               "id": 201,
               "content": "I agree, practice is the key.",
               "votes": 3,
               "userId": 1,
-              "createdAt": "5 seconds ago"
+              "createdAt": "2024-12-28T22:18:15.739Z"
             },
             {
               "id": 202,
               "content": "Don't forget to learn ES6 features too!",
               "votes": 5,
               "userId": 2,
-              "createdAt": "1 hour ago"
+              "createdAt": "2024-12-28T23:18:15.739Z"
             }
           ]
         },
@@ -63,7 +64,7 @@
           "content": "Try online tutorials and freeCodeCamp.",
           "votes": 8,
           "userId": 1,
-          "createdAt": "5 minutes ago",
+          "createdAt": "2024-12-28T23:18:15.739Z",
           "replies": []
         }
       ]
@@ -75,7 +76,7 @@
       "votes": 15,
       "saved": false,
       "userId": 1,
-      "createdAt": "6 hours ago",
+      "createdAt": "2024-05-28T23:18:15.739Z",
       "tags": ["html", "javascript", "c#"],
       "answers": []
     }

@@ -59,20 +59,6 @@ function getAllQuestions() {
   }
 }
 
-// function loadData() {
-//   const allUsers = getAllUsers(); 
-//   const allQuestions=getAllQuestions();
-
-//   if (allUsers && allQuestions) {
-//     return {
-//       users: allUsers, 
-//       questions: allQuestions,
-//     };
-//   } else {
-//     console.error("No questions found in localStorage or appData.");
-//     return { users: allUsers, questions: [] }; 
-//   }
-// }
 
 
 
@@ -83,20 +69,77 @@ function getUsername(userId, users) {
   return user ? user.firstName+"_"+user.lastName : "Unknown";
 }
 
+function formatTimeDifference(timestamp) {
+  const date = new Date(timestamp);
+  const currentDate = new Date();
 
-function showQuestions(questions, users) {
+  const timeDifference = currentDate - date;
+  const totalSeconds = Math.floor(timeDifference / 1000);
+
+  const months = Math.floor(totalSeconds / (30.44 * 24 * 3600));
+  const daysLeftAfterMonths = totalSeconds % (30.44 * 24 * 3600);
+  const days = Math.floor(daysLeftAfterMonths / (24 * 3600)); 
+  const hours = Math.floor((daysLeftAfterMonths % (24 * 3600)) / 3600);
+  const minutes = Math.floor((daysLeftAfterMonths % 3600) / 60); 
+  const seconds = daysLeftAfterMonths % 60; 
+
+  if (months > 0) {
+    return `${months} month${months !== 1 ? "s" : ""} ago`;
+  } else if (days > 0) {
+    return `${days} day${days !== 1 ? "s" : ""} ago`;
+  } else if (hours > 0) {
+    return `${hours} hour${hours !== 1 ? "s" : ""} ago`;
+  } else if (minutes > 0) {
+    return `${minutes} minute${minutes !== 1 ? "s" : ""} ago`;
+  } else {
+    return `${seconds} second${seconds !== 1 ? "s" : ""} ago`;
+  }
+}
+
+
+
+function updateTimeDifferences() {
+  const timeElements = document.querySelectorAll(".time-difference");
+
+  setInterval(() => {
+    timeElements.forEach((element) => {
+      const createdAt = element.dataset.createdAt; 
+      const formattedTime = formatTimeDifference(createdAt);
+      element.textContent = formattedTime; 
+    });
+  }, 1000); 
+}
+
+
+
+//////////////////////////////////////////////////////////////
+function handelStoreCurrentQuestiontoLocalStorage(question){
+  // console.log(question);
+   localStorage.setItem("currentQuestion",JSON.stringify(question));
+   location.href="./QuestionDetails.html"
+}
+////////////////////////////////////////////////////////////////////
+function showQuestions(questions, users, filterType = "Newest Questions") {
   const container = document.getElementById("question-box");
+  const numberOfQuestionsElement = document.getElementById("numberOfQuestions");
+  const headingElement = document.querySelector(".secondary-nav h2");
+
   container.innerHTML = "";
+  numberOfQuestionsElement.textContent = questions.length; 
+  headingElement.innerHTML = `${filterType} <i class="fa-solid fa-circle-question"></i>`;
 
   questions.forEach((question) => {
-    const username = getUsername(question.userId, users); 
-    document.getElementById("numberOfQuestions").innerText = questions.length;
+    const username = getUsername(question.userId, users);
     const questionElement = document.createElement("div");
+
+    questionElement.addEventListener("click", () => {
+      handelStoreCurrentQuestiontoLocalStorage(question);
+    });
+
     questionElement.classList.add("question-content");
-    questionElement.id = "question-content";
-    const tagsHtml = question.tags
-      ? question.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")
-      : "";
+    questionElement.id = `question-${question.id}`;
+
+    const tagsHtml = question.tags? question.tags.map((tag) => `<span class="tag">${tag}</span>`).join(""): "";
 
     questionElement.innerHTML = `
       <div class="vote-answers">
@@ -105,28 +148,33 @@ function showQuestions(questions, users) {
       </div>
       <div class="question-items">
         <h2>${question.title}</h2>
-        <p>
-        ${question.content}
-        </p>
+        <p>${question.content}</p>
         <div class="tags-and-user-data">
           <div class="tags">${tagsHtml}</div>
           <div class="question-user-data">
             <i class="fa-solid fa-user"></i><span>${username}</span>
-            <i class="fa-regular fa-clock"></i> <span>${question.createdAt}</span>
+            <i class="fa-regular fa-clock"></i> <span class="time-difference" data-created-at="${question.createdAt}">Calculating...</span>
           </div>
         </div>
       </div>`;
     container.appendChild(questionElement);
   });
+  updateTimeDifferences();
 }
 
+
 function displayData() {
-  // const data = loadData();
-  showQuestions(getAllQuestions(), getAllUsers());
+  showQuestions(getAllQuestions(), getAllUsers(),"Newest Questions");
 }
 
 displayData();
 
+document.addEventListener("DOMContentLoaded", () => {
+  const allUsers = getAllUsers();
+  console.log("All users from localStorage:", allUsers);
+});
+/////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 document.querySelectorAll("ul>li").forEach(function(ele){
   console.log(ele);
@@ -189,17 +237,12 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("activeNavIndex", index);
     });
   });
-
+  
   document.querySelector(".filter-box>span").classList.add("active")
   sortNewest();
 
 });
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  const allUsers = getAllUsers();
-  console.log("All users from localStorage:", allUsers);
-});
 
 /////////////////////////////////////////////for popup of add question///////////////////////////////////
 
@@ -208,27 +251,25 @@ document.getElementById("btn").addEventListener("click",function(){
 })
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 const filterBox = document.querySelectorAll(".filter-box>span");
+
 function sortNewest() {
-  
-  // getAllQuestions().forEach((e)=>{console.log(parseInt(e.createdAt));});
-  
-  const sortedQuestions = getAllQuestions().sort((a, b) => new Date(parseInt(a.createdAt)) - new Date(parseInt(b.createdAt)));
-  console.log(sortNewest,"sortednewest");
-  
-  showQuestions(sortedQuestions,getAllUsers());
+  const sortedQuestions = getAllQuestions().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  showQuestions(sortedQuestions, getAllUsers(), "Newest Questions");
 }
 
 
 function sortHighestVotes() {
   const sortedQuestions = getAllQuestions().sort((a, b) => b.votes - a.votes);
-  showQuestions(sortedQuestions,getAllUsers());
+  showQuestions(sortedQuestions, getAllUsers(), "Highest Votes Questions");
 }
 
 
 function showUnanswered() {
   const unansweredQuestions = getAllQuestions().filter(question => question.answers.length === 0);
-  showQuestions(unansweredQuestions,getAllUsers());
+  showQuestions(unansweredQuestions, getAllUsers(), "Unanswered Questions");
 }
+
+
 filterBox.forEach((ele)=>{
   ele.addEventListener("click",()=>{
     filterBox.forEach((e)=>{e.classList.remove("active")})
