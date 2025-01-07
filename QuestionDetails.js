@@ -112,16 +112,13 @@ function formatTimeDifference(timestamp) {
 
 
 function updateTimeDifferences() {
-  // Select both .time and .time-difference elements
   const timeElements = document.querySelectorAll(".time, .time-difference");
-
-  // Update the time differences every second
   setInterval(() => {
     timeElements.forEach((element) => {
-      const createdAt = element.dataset.createdAt; // Get the data-created-at attribute
+      const createdAt = element.dataset.createdAt;
       if (createdAt) {
-        const formattedTime = formatTimeDifference(createdAt); // Format the time difference
-        element.textContent = formattedTime; // Update the text content
+        const formattedTime = formatTimeDifference(createdAt);
+        element.textContent = formattedTime;
       }
     });
   }, 1000);
@@ -133,7 +130,7 @@ function updateTimeDifferences() {
 let increament = document.getElementById("increament");
 let decreament = document.getElementById("decreament");
 let voteCountElement = document.getElementById("noOfVotes");
-////////////////////////////
+/////////////////
 let increamentAnswer = document.getElementById("increamentanswer");
 let decreamentAnswer = document.getElementById("decreamentanswer");
 let voteCountElementAnswer = document.getElementById("noOfVotesAnswer");
@@ -266,51 +263,193 @@ bookmarkButton.addEventListener("click", function () {
     localStorage.setItem("allUsers", JSON.stringify(allUsers));
   }
 });
+/////////////////////////////////////////////////////to add answer//////////////////////////////////////////////////////////////
+let form = document.getElementById("form");
+let contentanswerinput=document.getElementById("contentanswer");
+let btnPostAnswer =document.getElementById("btnPostAnswer");
+//////////////////////////// button show
+document.getElementById("showpostanswer").addEventListener("click", function () {
+  if (form.classList.contains("show")) {
+    form.classList.remove("show");
+    this.innerHTML = `
+      <p>Add Answer</p>
+      <i class="fa-solid fa-circle-plus"></i>
+    `;
+  } else {
+    form.classList.add("show");
+    this.innerHTML = `
+      <p>Cancel</p>
+      <i class="fa-solid fa-circle-xmark"></i>
+    `;
+  }
+});
+//////////////////////////button handel send answer
+btnPostAnswer.addEventListener("click",(e)=>{
+  e.preventDefault();
+  if(contentanswerinput.value.trim()){
+    const newAnswer = {
+      content: contentanswerinput.value,
+      userId: currentUser.id,
+      createdAt: new Date(),
+      votes: 0,
+      replies: [],
+    };
+
+    currentQuestionDetails.answers.push(newAnswer);
+
+    const questionIndex = allQuestions.findIndex((q) => q.id === currentQuestionDetails.id);
+    if (questionIndex !== -1) {
+      allQuestions[questionIndex].answers.push(newAnswer);
+    }
+
+    localStorage.setItem("currentQuestion", JSON.stringify(currentQuestionDetails));
+    localStorage.setItem("allQuestions", JSON.stringify(allQuestions));
+
+    contentanswerinput.value = "";
+    form.classList.remove("show");
+    document.getElementById("showpostanswer").innerHTML = `
+      <p>Add Answer</p>
+      <i class="fa-solid fa-circle-plus"></i>
+    `;
+    
+    ////////////////////////render////////////////////
+       
+    window.location.href = window.location.href;
+
+    ////////////////////////////////////////////////////
+     
+  }
+})
+
 
 //////////////////////////////////////////////////answers////////////////////////////////////////////////////////////////
-let answersContainer =document.getElementById("answers-Container");
-let answers=currentQuestionDetails.answers;
+let answers = currentQuestionDetails?.answers;
+let answersContainer = document.getElementById("answers-Container");
 
-console.log(currentQuestionDetails.answers);
-console.log(allUsers);
+answers?.forEach((answer, index) => {
+  let repliesHTML = '';
 
-
-answers?.forEach((answer,index)=>{
-   answersContainer.innerHTML+=`
-            <div class="answer" id="answer-${index}">
-                    <div class="votes">
-                         <i class="fa-solid fa-play increamentanswer" id="increamentanswer-${index}" data-index="${index}"></i>
-                    <span id="noOfVotesAnswer-${index}">${answer.votes}</span>
-                    <i class="fa-solid fa-play decreamentanswer" id="decreamentanswer-${index}" data-index="${index}"></i>
-                    </div>
-               
-                    <div id="content">
-                            <p>${answer.content}</p>
-                            <div class="userInfo">
-                                  <div class="left">
-                                      <div class="user">  
-                                        <i class="fa-solid fa-user"></i>
-                                        <p id="username">${getUsername(answer.userId,allUsers)}</p>
-                                      </div>
-                                      <div class="time" data-created-at="${answer.createdAt}">
-                                         Calculating...
-                                      </div>
-                                  </div>
-
-                                  <div class="right">
-                                       <button>
-                                          <p>Reply</p>
-                                          <i class="fa-solid fa-reply-all"></i>
-                                       </button>
-                                  </div>
-                             </div>
-                    </div>
+  if (answer.replies && Array.isArray(answer.replies)) {
+    repliesHTML = answer.replies.map((reply, replyIndex) => `
+      <div class="reply" id="reply-${index}-${replyIndex}">
+        <div class="replyContent">
+          <p>${reply.content}</p>
+          <div class="userInforeply">
+            <div class="left">
+              <div class="user">
+                <i class="fa-solid fa-user"></i>
+                <p id="replyUsername">${getUsername(reply.userId, allUsers)}</p>
+              </div>
+              <div class="time" data-created-at="${reply.createdAt}">
+                Calculating...
+              </div>
+            </div>
+          </div>
         </div>
-   `
-})
+      </div>
+    `).join("");
+  }
+
+  answersContainer.innerHTML += `
+    <div class="answeranditsReplies"> 
+      <div class="answer" id="answer-${index}">
+        <div class="votes">
+          <i class="fa-solid fa-play increamentanswer" id="increamentanswer-${index}" data-index="${index}"></i>
+          <span id="noOfVotesAnswer-${index}">${answer.votes}</span>
+          <i class="fa-solid fa-play decreamentanswer" id="decreamentanswer-${index}" data-index="${index}"></i>
+        </div>
+        <div id="content">
+          <p>${answer.content}</p>
+          <div class="userInfo">
+            <div class="left">
+              <div class="user">  
+                <i class="fa-solid fa-user"></i>
+                <p id="username">${getUsername(answer.userId, allUsers)}</p>
+              </div>
+              <div class="time" data-created-at="${answer.createdAt}">
+                Calculating...
+              </div>
+            </div>
+            <div class="right">
+              <button class="handelshowreply" data-answer-index="${index}">
+                <p>Reply</p>
+                <i class="fa-solid fa-reply-all"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="replies" id="replies-${index}">
+        ${repliesHTML}
+      </div>
+    </div>
+  `;
+});
+
 updateTimeDifferences();
+///////////////////////////////////////////handel add reply/////////////////////////////
+////////show
+let existingForm =null
+answersContainer.addEventListener("click", (event) => {
+  if (event.target.closest(".handelshowreply")) {
+    // console.log("yeeeeeeees");
+    
+    const button = event.target.closest(".handelshowreply");
+    const index = button.dataset.answerIndex;
+    const repliesContainer = document.getElementById(`replies-${index}`);
 
+    existingForm = repliesContainer.querySelector(`#form2-${index}`);
+    if (existingForm) {
+      existingForm.remove();
+    } else {
+      const replyFormHTML = `
+        <form action="" id="form2-${index}" class="reply-form">
+          <input type="text" placeholder="Write your reply" id="contentreply-${index}" autofocus>
+          <button type="submit" id="btnPostreply-${index}">
+            <p>Post your reply</p>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      `;
+      repliesContainer.insertAdjacentHTML("afterbegin", replyFormHTML);
+    }
+  }
+});
+/////////////////////////////////////////////add reply
+answersContainer.addEventListener("submit", (event) => {
+  event.preventDefault();
 
+  const form = event.target;
+  const answerIndex = form.id.split("-")[1]; 
+  const input = form.querySelector("input");
+  const replyContent = input.value.trim();
+
+  if (replyContent) {
+    const newReply = {
+      content: replyContent,
+      userId: currentUser.id,
+      createdAt: new Date(),
+    };
+
+    currentQuestionDetails.answers[answerIndex].replies.push(newReply);
+
+    const questionIndex = allQuestions.findIndex((q) => q.id === currentQuestionDetails.id);
+    if (questionIndex !== -1) {
+      allQuestions[questionIndex].answers[answerIndex].replies.push(newReply);
+    }
+    localStorage.setItem("currentQuestion", JSON.stringify(currentQuestionDetails));
+    localStorage.setItem("allQuestions", JSON.stringify(allQuestions));
+
+    input.value = "";
+    if (existingForm) {
+      existingForm.remove();
+      existingForm = null; 
+    }
+    window.location.href=window.location.href;
+  }
+});
+
+////////////////////////////////////////////////////////////////////////////////////
 answers.forEach((answer, index) => {
   const incrementButton = document.getElementById(`increamentanswer-${index}`);
   const decrementButton = document.getElementById(`decreamentanswer-${index}`);

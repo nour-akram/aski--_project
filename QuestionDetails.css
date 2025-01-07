@@ -54,6 +54,7 @@
   width: 90%;
 }
 #content>p{
+  font-size: 20px;
   opacity: 0.6;  
   margin: 15px 0; 
 }
@@ -141,6 +142,7 @@ i.clicked{
     border: none;
     outline: none;
     font-size: 20px;
+    cursor: pointer;
 }
 .answer #content{
     width: 100%;
@@ -149,7 +151,7 @@ i.clicked{
 
 .buttonAddAnswers{
     width: 80%;
-    margin: 20px auto;
+    margin: 10px auto;
     border-top: 1.5px solid var(--secondaryColor);
     padding: 10px 0;
 }
@@ -173,8 +175,81 @@ i.clicked{
     color: var(--erroColor);
 }
 .answer .votes i{
+    font-size: 22px;
     rotate: 90deg;
 }
 .answer .votes i:nth-child(1){
+    font-size: 22px;
     rotate: -90deg;
+}
+
+
+#form{
+    width: 80%;
+    margin: 0px auto;
+    padding: 10px 0;
+    display: none;
+}
+.reply-form{
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px 0;
+}
+#form.show{
+    display: block;
+}
+#form input,.reply-form input{
+    padding: 10px 0px 30px 10px;
+    background: transparent;
+    border: 1.5px solid var(--primaryColor);
+    border-radius: 10px;
+    color: var(--primaryColor);   
+    width: 100%;
+    margin-bottom: 10px;
+}
+#form button,.reply-form button{
+    width: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    color: white;
+    background: var(--primaryColor);
+    font-family: "Trocchi", serif;
+    cursor: pointer;
+}
+
+/*  */
+.userInforeply .left .user{
+    display: flex;
+    gap: 10px;
+    text-decoration: underline;
+}
+.userInforeply .left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.replies{
+    width: 90%;
+    /* background: red; */
+    margin: 10px auto;
+}
+.replies .reply{
+    padding: 20px;
+    border-top: 1.5px solid var(--secondaryColor);
+    
+}
+.replyContent{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.replyContent>p{
+    font-size: 20px;
+    opacity: 0.6;
 }

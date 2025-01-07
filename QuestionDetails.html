@@ -14,8 +14,8 @@
       referrerpolicy="no-referrer"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Trocchi&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Trocchi&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="row">
@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li class="hidden">
-                <a href="#" class="col">
+                <a href="saved.html" class="col">
                     <i class="fa-solid fa-bookmark"></i>
                     <p>Save</p>
                 </a>
@@ -108,11 +108,19 @@
               
          </div>
          <div class="buttonAddAnswers">
-             <button>
+             <button id="showpostanswer">
                 <p>Add Answer</p>
                 <i class="fa-solid fa-circle-plus"></i>
              </button>
          </div>
+         <form action="" id="form">
+            <input type="text" placeholder="write your answer " id="contentanswer">
+            <button id="btnPostAnswer">
+                <p>post your answer</p>
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+         </form>
+        
      </main>
     <script src="./QuestionDetails.js"></script>
 </body>

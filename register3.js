@@ -5,9 +5,9 @@ const errInterestMsg = document.getElementById("errmsginterest");
 const fileInput = document.getElementById('fileInput');
 const uploadButton = document.getElementById('uploadButton');
 const interests = [];
-let imageUrl = ""; // Declare imageUrl in the outer scope
+let imageUrl = "";
 
-// Handle adding interests
+
 interestInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
@@ -23,7 +23,6 @@ interestInput.addEventListener('keypress', (event) => {
 });
 
 function createTag(text) {
-    // Create a new tag for the added interest
     const tag = document.createElement('div');
     tag.classList.add('tag');
     tag.textContent = text;
@@ -31,19 +30,17 @@ function createTag(text) {
     const closeButton = document.createElement('button');
     closeButton.textContent = 'x';
     closeButton.addEventListener('click', () => {
-        // Remove the interest from the array and update the UI
         const index = interests.indexOf(text);
         if (index > -1) {
             interests.splice(index, 1);
         }
-        alltags.removeChild(tag); // Remove the tag from the container
+        alltags.removeChild(tag); 
     });
 
     tag.appendChild(closeButton);
-    alltags.appendChild(tag); // Append the tag to the container
+    alltags.appendChild(tag); 
 }
 
-// Handle image upload
 uploadButton.addEventListener('click', () => {
     fileInput.click();
 });
@@ -66,18 +63,24 @@ fileInput.addEventListener('change', () => {
 registerButton.addEventListener('click', (event) => {
     event.preventDefault();
 
-    if (interests.length === 0) {
-        errInterestMsg.textContent = "It must be at least one interest.";
-    } else {
-        errInterestMsg.textContent = "";
+    var allUsers = JSON.parse(localStorage.getItem('allUsers')) || [];
+    var currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
 
-        
+    const emailExists = allUsers.some(user => user.email === currentUser.email);
+
+    if (interests.length === 0 ) {
+        errInterestMsg.textContent = "It must be at least one interest.";
+    } else if(emailExists){
+        errInterestMsg.textContent = "Email is already registered.";
+    }
+    else {
+        errInterestMsg.textContent = "";  
         var currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
         currentUser.interests = interests; 
         currentUser.imageUrl = imageUrl;  
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
-        var allUsers = JSON.parse(localStorage.getItem('allUsers')) || [];
+       
         allUsers.push(currentUser); 
         localStorage.setItem('allUsers', JSON.stringify(allUsers));
         console.log("Registration complete:", currentUser);
@@ -128,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
             navItems.forEach(li => li.classList.remove('active'));
             item.classList.add('active');
-
             localStorage.setItem('activeNavIndex', index);
         });
     });

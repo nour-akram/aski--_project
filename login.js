@@ -82,7 +82,7 @@ function login(email, password) {
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = localStorage.getItem('currentUser'); 
     
-    const navItems = document.querySelectorAll('nav ul>li'); // Select all navigation items
+    const navItems = document.querySelectorAll('nav ul>li'); 
     const loginItem = document.querySelector('li:nth-child(2)'); 
     const registerItem = document.querySelector('li:nth-child(3)'); 
     const saveItem = document.querySelector('li:nth-child(4)');
