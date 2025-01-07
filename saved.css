@@ -68,7 +68,7 @@
   }
   
   #no-saved img {
-    max-width: 200px;
+    /* max-width: 200px; */
     margin-bottom: 20px;
   }
   
@@ -104,3 +104,4 @@
   .heading{
     margin: 20px;
   }
+  

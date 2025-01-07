@@ -20,7 +20,7 @@ function getUsername(userId, users) {
       console.log("No saved questions found.");
       savedQuestionsContainer.innerHTML = `
         <div id="no-saved">
-          <img src="no-saved-questions.jpg" alt="No Saved Questions" />
+          <img src="saaved.svg" alt="No Saved Questions" />
           <p>No saved questions yet.</p>
         </div>
       `;
