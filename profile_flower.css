@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  :root{
+    --primaryColor:#1E82A9;
+    --background:#181D20;
+    --secondaryColor:#2A3236;
+    --erroColor:#8D2E46;
+}
+  
+  .askii {
+    font-family: "Rum Raisin", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+   body {
+    margin: 0;
+    padding: 0;
+    background-color:var(--background);
+    color: var(--primaryColor);
+  }
+
+.profile {
+    font-family:'Courier New', Courier, monospace;
+    max-width: 65%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.info h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.info .title {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #c4c4c4;
+}
+
+.info .location {
+    font-size: 14px;
+    color: #c4c4c4;
+}
+
+.follow-btn{
+    background-color: #2b84c8;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.follow-btn:hover {
+    background-color: #1d6ba1;
+}
+
+.stats {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding-top:100px;
+    /* border-top: 1px solid #444;
+    padding-top: 20px; */
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1; 
+}
+
+.stat-item h3 {
+    font-size: 24px;
+    margin: 0;
+    color: #fff;
+}
+
+.stat-item p {
+    font-size: 14px;
+    margin: 5px 0 0;
+    color: #68a4c4;
+}
+
+.divider {
+    width: 1px;
+    background-color: #444;
+    height: 50px;
+} 
