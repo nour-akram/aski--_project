@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aski!</title>
-    <link rel="icon" href="./aki! logo.svg" sizes="30x30" type="image/x-icon">
+    <link rel="icon" href="./aki! logo.svg" sizes="30x30" type="image/x-icon" />
     <link rel="icon" type="image/jpg" />
     <link rel="icon" type="image/x-icon" href="./images/icon.jpg" />
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./navbar.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -17,21 +17,69 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Trocchi&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Trocchi&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
       <nav class="row">
         <div class="logo-search row">
-            <img src="./aki! logo.svg" alt="logo">
-            <div class="searchbar">
-              <input type="text" placeholder="search for any question title or tags">
-              <img src="./search.svg" alt="search">
-            </div>
+          <img src="./aki! logo.svg" alt="logo" />
+          <div class="searchbar">
+            <input
+              type="text"
+              placeholder="search for any question title or tags"
+              id="search-input"
+            />
+            <img src="./search.svg" id="search-button" alt="search" />
+          </div>
         </div>
         <ul class="row">
+
+          <li>
+            <a href="index.html" class="col">
+              <i class="fa-solid fa-house"></i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li>
+            <a href="./login.html" class="col">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <p>Login</p>
+            </a>
+          </li>
+          <li>
+            <a href="./registerpage.html" class="col">
+              <i class="fa-solid fa-user-plus"></i>
+              <p>Register</p>
+            </a>
+          </li>
+          <li class="hidden">
+            <a href="saved.html" class="col">
+              <i class="fa-solid fa-bookmark"></i>
+              <p>Save</p>
+            </a>
+          </li>
+          <li class="hidden">
+            <a href="#" class="col">
+              <i class="fa-solid fa-user"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+          <li class="hidden">
+            <a href="./logout.html" class="col">
+              <i
+                class="fa-solid fa-right-from-bracket"
+                style="rotate: 180deg"
+              ></i>
+              <p>Logout</p>
+            </a>
+          </li>
+=======
             <li >
                 <a href="index.html" class="col">
                     <i class="fa-solid fa-house"></i>
@@ -68,8 +116,9 @@
                     <p>Logout</p>
                 </a>
             </li>
+
         </ul>
-    </nav>
+      </nav>
     </div>
     <!-- <hr
       style="
@@ -83,8 +132,10 @@
       <main>
         <div class="secondary-nav">
           <div class="questionandBtn">
-            <h2>Newest Questions <i class="fa-solid fa-circle-question"></i></h2>
-            <button id="btn" >Add question</button>
+            <h2>
+              Newest Questions <i class="fa-solid fa-circle-question"></i>
+            </h2>
+            <button id="btn">Add question</button>
           </div>
           <div class="filter-container">
             <div class="number-all-question">

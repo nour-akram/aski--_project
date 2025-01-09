@@ -1,4 +1,3 @@
-
 const xhr = new XMLHttpRequest();
 
 xhr.open("GET", "./Data.json", true);
@@ -6,18 +5,16 @@ xhr.open("GET", "./Data.json", true);
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4 && xhr.status === 200) {
     const jsonData = JSON.parse(xhr.responseText);
-     console.log(jsonData);
-     
-      if(jsonData.users && jsonData.questions){
-        addUsersToAllUsers(jsonData.users);
-        addQuestionsToAllQuestions(jsonData.questions)
-      }
-    
+    console.log(jsonData);
+
+    if (jsonData.users && jsonData.questions) {
+      addUsersToAllUsers(jsonData.users);
+      addQuestionsToAllQuestions(jsonData.questions);
+    }
   }
 };
 
 xhr.send();
-
 
 function addUsersToAllUsers(newUsers) {
   const existingAllUsers = JSON.parse(localStorage.getItem("allUsers")) || [];
@@ -27,16 +24,20 @@ function addUsersToAllUsers(newUsers) {
 }
 
 function addQuestionsToAllQuestions(newQuestion) {
-  const existingAllQuestions = JSON.parse(localStorage.getItem("allQuestions")) || [];
+  const existingAllQuestions =
+    JSON.parse(localStorage.getItem("allQuestions")) || [];
   const updatedAllQuestions = mergeUsers(existingAllQuestions, newQuestion);
   localStorage.setItem("allQuestions", JSON.stringify(updatedAllQuestions));
-  console.log("Updated allQuestions stored in localStorage:", updatedAllQuestions);
+  console.log(
+    "Updated allQuestions stored in localStorage:",
+    updatedAllQuestions
+  );
 }
 
 function mergeUsers(existing, newUsers) {
-  const existingIds = new Set(existing.map((e) => e.id)); 
-  const uniqueNewUsers = newUsers.filter((user) => !existingIds.has(user.id)); 
-  return [...existing, ...uniqueNewUsers]; 
+  const existingIds = new Set(existing.map((e) => e.id));
+  const uniqueNewUsers = newUsers.filter((user) => !existingIds.has(user.id));
+  return [...existing, ...uniqueNewUsers];
 }
 
 function getAllUsers() {
@@ -59,14 +60,11 @@ function getAllQuestions() {
   }
 }
 
-
-
-
 function getUsername(userId, users) {
   const user = users.find((user) => user.id === userId);
   console.log(users);
-  
-  return user ? user.firstName+"_"+user.lastName : "Unknown";
+
+  return user ? user.firstName + "_" + user.lastName : "Unknown";
 }
 
 function formatTimeDifference(timestamp) {
@@ -78,10 +76,10 @@ function formatTimeDifference(timestamp) {
 
   const months = Math.floor(totalSeconds / (30.44 * 24 * 3600));
   const daysLeftAfterMonths = totalSeconds % (30.44 * 24 * 3600);
-  const days = Math.floor(daysLeftAfterMonths / (24 * 3600)); 
+  const days = Math.floor(daysLeftAfterMonths / (24 * 3600));
   const hours = Math.floor((daysLeftAfterMonths % (24 * 3600)) / 3600);
-  const minutes = Math.floor((daysLeftAfterMonths % 3600) / 60); 
-  const seconds = daysLeftAfterMonths % 60; 
+  const minutes = Math.floor((daysLeftAfterMonths % 3600) / 60);
+  const seconds = daysLeftAfterMonths % 60;
 
   if (months > 0) {
     return `${months} month${months !== 1 ? "s" : ""} ago`;
@@ -96,27 +94,23 @@ function formatTimeDifference(timestamp) {
   }
 }
 
-
-
 function updateTimeDifferences() {
   const timeElements = document.querySelectorAll(".time-difference");
 
   setInterval(() => {
     timeElements.forEach((element) => {
-      const createdAt = element.dataset.createdAt; 
+      const createdAt = element.dataset.createdAt;
       const formattedTime = formatTimeDifference(createdAt);
-      element.textContent = formattedTime; 
+      element.textContent = formattedTime;
     });
-  }, 1000); 
+  }, 1000);
 }
 
-
-
 //////////////////////////////////////////////////////////////
-function handelStoreCurrentQuestiontoLocalStorage(question){
+function handelStoreCurrentQuestiontoLocalStorage(question) {
   // console.log(question);
-   localStorage.setItem("currentQuestion",JSON.stringify(question));
-   location.href="./QuestionDetails.html"
+  localStorage.setItem("currentQuestion", JSON.stringify(question));
+  location.href = "./QuestionDetails.html";
 }
 ////////////////////////////////////////////////////////////////////
 function showQuestions(questions, users, filterType = "Newest Questions") {
@@ -125,7 +119,7 @@ function showQuestions(questions, users, filterType = "Newest Questions") {
   const headingElement = document.querySelector(".secondary-nav h2");
 
   container.innerHTML = "";
-  numberOfQuestionsElement.textContent = questions.length; 
+  numberOfQuestionsElement.textContent = questions.length;
   headingElement.innerHTML = `${filterType} <i class="fa-solid fa-circle-question"></i>`;
 
   questions.forEach((question) => {
@@ -139,7 +133,9 @@ function showQuestions(questions, users, filterType = "Newest Questions") {
     questionElement.classList.add("question-content");
     questionElement.id = `question-${question.id}`;
 
-    const tagsHtml = question.tags? question.tags.map((tag) => `<span class="tag">${tag}</span>`).join(""): "";
+    const tagsHtml = question.tags
+      ? question.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")
+      : "";
 
     questionElement.innerHTML = `
       <div class="vote-answers">
@@ -162,9 +158,8 @@ function showQuestions(questions, users, filterType = "Newest Questions") {
   updateTimeDifferences();
 }
 
-
 function displayData() {
-  showQuestions(getAllQuestions(), getAllUsers(),"Newest Questions");
+  showQuestions(getAllQuestions(), getAllUsers(), "Newest Questions");
 }
 
 displayData();
@@ -176,22 +171,21 @@ document.addEventListener("DOMContentLoaded", () => {
 /////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-document.querySelectorAll("ul>li").forEach(function(ele){
+document.querySelectorAll("ul>li").forEach(function (ele) {
   console.log(ele);
-    ele.classList.remove("active");
-})
+  ele.classList.remove("active");
+});
 document.querySelectorAll("ul>li")[0].classList.add("active");
 
 document.addEventListener("DOMContentLoaded", () => {
-  
-  document.querySelectorAll("ul>li").forEach(function(ele){
+  document.querySelectorAll("ul>li").forEach(function (ele) {
     console.log(ele);
-      ele.classList.remove("active");
-  })
+    ele.classList.remove("active");
+  });
   document.querySelectorAll("ul>li")[0].classList.add("active");
-  
+
   console.log(document.querySelectorAll("ul>li"));
-  
+
   const currentUser = localStorage.getItem("currentUser");
 
   const navItems = document.querySelectorAll("nav ul>li");
@@ -237,57 +231,113 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("activeNavIndex", index);
     });
   });
-  
-  document.querySelector(".filter-box>span").classList.add("active")
+
+  document.querySelector(".filter-box>span").classList.add("active");
   sortNewest();
-
 });
-
 
 /////////////////////////////////////////////for popup of add question///////////////////////////////////
 
-document.getElementById("btn").addEventListener("click",function(){
-   window.location.href="./popup.html"
-})
+document.getElementById("btn").addEventListener("click", function () {
+  window.location.href = "./popup.html";
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 const filterBox = document.querySelectorAll(".filter-box>span");
 
 function sortNewest() {
-  const sortedQuestions = getAllQuestions().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const sortedQuestions = getAllQuestions().sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
   showQuestions(sortedQuestions, getAllUsers(), "Newest Questions");
 }
-
 
 function sortHighestVotes() {
   const sortedQuestions = getAllQuestions().sort((a, b) => b.votes - a.votes);
   showQuestions(sortedQuestions, getAllUsers(), "Highest Votes Questions");
 }
 
-
 function showUnanswered() {
-  const unansweredQuestions = getAllQuestions().filter(question => question.answers.length === 0);
+  const unansweredQuestions = getAllQuestions().filter(
+    (question) => question.answers.length === 0
+  );
   showQuestions(unansweredQuestions, getAllUsers(), "Unanswered Questions");
 }
 
-
-filterBox.forEach((ele)=>{
-  ele.addEventListener("click",()=>{
-    filterBox.forEach((e)=>{e.classList.remove("active")})
+filterBox.forEach((ele) => {
+  ele.addEventListener("click", () => {
+    filterBox.forEach((e) => {
+      e.classList.remove("active");
+    });
     if (ele.dataset.sort === "newest") {
-      ele.classList.add("active")
+      ele.classList.add("active");
       sortNewest();
       console.log("newsest");
     } else if (ele.dataset.sort === "highestVotes") {
-      ele.classList.add("active")
+      ele.classList.add("active");
       sortHighestVotes();
     } else if (ele.dataset.sort === "unanswered") {
-      ele.classList.add("active")
+      ele.classList.add("active");
       showUnanswered();
     }
-  })
-})
+  });
+});
+/************************************************Search */
 
+// if We Want to search by click Search
+// document.getElementById("search-button").addEventListener("click", function () {
+//   const searchTerm = document
+//     .getElementById("search-input")
+//     .value.trim()
+//     .toLowerCase();
 
+//   if (searchTerm) {
+//     const allQuestions = getAllQuestions();
+//     const allUsers = getAllUsers();
 
+//     // Filter questions by title or content
+//     const filteredQuestions = allQuestions.filter(
+//       (question) =>
+//         question.title.toLowerCase().includes(searchTerm) ||
+//         question.content.toLowerCase().includes(searchTerm)
+//     );
 
-showQuestions(getAllQuestions(),getAllUsers());
+//     if (filteredQuestions.length > 0) {
+//       showQuestions(
+//         filteredQuestions,
+//         allUsers,
+//         `Search Results for "${searchTerm}"`
+//       );
+//     } else {
+//       const container = document.getElementById("question-box");
+//       container.innerHTML = `<p>No results found for "${searchTerm}"</p>`;
+//     }
+//   } else {
+//     alert("Please enter a search term.");
+//   }
+// });
+
+// this for searching by input (when input any value the search is clad)
+
+document.getElementById("search-input").addEventListener("input", function () {
+  const searchTerm = this.value.trim().toLowerCase();
+  const allQuestions = getAllQuestions();
+  const allUsers = getAllUsers();
+
+  const filteredQuestions = allQuestions.filter(
+    (question) =>
+      question.title.toLowerCase().includes(searchTerm) ||
+      question.content.toLowerCase().includes(searchTerm)
+  );
+
+  if (filteredQuestions.length > 0) {
+    showQuestions(
+      filteredQuestions,
+      allUsers,
+      `Search Results for "${searchTerm}"`
+    );
+  } else {
+    const container = document.getElementById("question-box");
+    container.innerHTML = `<p>No results found for "${searchTerm}"</p>`;
+  }
+});
+showQuestions(getAllQuestions(), getAllUsers());
